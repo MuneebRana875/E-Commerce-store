@@ -27,6 +27,9 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 // Purani line ko comment karein: // mongoose.connect(process.env.MONGO_URI)...
 // Aur ye direct paste karein:
 
+const app = express();
+  const PORT = process.env.PORT || 5000;
+
 mongoose.connect("mongodb+srv://muneebrana497_db_user:EYLDRTDmunYcE0Zf@cluster0.mgk6gg4.mongodb.net/ecommerce?retryWrites=true&w=majority")
   .then(() => console.log("✅ MongoDB Connected Successfully!"))
   .catch((err) => console.log("❌ MongoDB Connection Error:", err));
@@ -42,7 +45,7 @@ mongoose.connect("mongodb+srv://muneebrana497_db_user:EYLDRTDmunYcE0Zf@cluster0.
           "https://e-commercestore-jet.vercel.app",
         ];
         
-        if (!origin || allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
+        if (!origin || allowedOrigins.includes(origin) || (origin && origin.endsWith(".vercel.app")) ) {
           callback(null, true);
         } else {
           callback(new Error("Not allowed by CORS"));
@@ -61,9 +64,6 @@ mongoose.connect("mongodb+srv://muneebrana497_db_user:EYLDRTDmunYcE0Zf@cluster0.
   );
 
   app.options("*", cors());
-  const app = express();
-  const PORT = process.env.PORT || 5000;
-
 
 app.use(cookieParser());
 app.use(express.json());
