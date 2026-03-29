@@ -41,7 +41,7 @@ app.use(
       
       const allowedOrigins = [
         "http://localhost:5173",
-        "https://ecommerce-store-taupe-eta.vercel.app"
+        "https://e-commercestore-jet.vercel.app/"
       ];
       
       if (!origin || allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
