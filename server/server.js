@@ -37,7 +37,19 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: "https://e-commercestore-7ccge5yyg-muneeb-ranas-projects-150d6a89.vercel.app",
+    origin: function (origin, callback) {
+      
+      const allowedOrigins = [
+        "http://localhost:5173",
+        "https://ecommerce-store-taupe-eta.vercel.app"
+      ];
+      
+      if (!origin || allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
