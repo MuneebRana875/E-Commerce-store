@@ -30,9 +30,9 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 const app = express();
   const PORT = process.env.PORT || 5000;
 
-mongoose.connect("mongodb+srv://muneebrana497_db_user:EYLDRTDmunYcE0Zf@cluster0.mgk6gg4.mongodb.net/ecommerce?retryWrites=true&w=majority")
-  .then(() => console.log("✅ MongoDB Connected Successfully!"))
-  .catch((err) => console.log("❌ MongoDB Connection Error:", err));
+// mongoose.connect("mongodb+srv://muneebrana497_db_user:EYLDRTDmunYcE0Zf@cluster0.mgk6gg4.mongodb.net/ecommerce?retryWrites=true&w=majority")
+//   .then(() => console.log("✅ MongoDB Connected Successfully!"))
+//   .catch((err) => console.log("❌ MongoDB Connection Error:", err));
 
 
 
@@ -67,17 +67,17 @@ mongoose.connect("mongodb+srv://muneebrana497_db_user:EYLDRTDmunYcE0Zf@cluster0.
 
 app.use(cookieParser());
 app.use(express.json());
-app.use("/api/auth", authRouter);
-app.use("/api/admin/products", adminProductsRouter);
-app.use("/api/admin/orders", adminOrderRouter);
+// app.use("/api/auth", authRouter);
+// app.use("/api/admin/products", adminProductsRouter);
+// app.use("/api/admin/orders", adminOrderRouter);
 
-app.use("/api/shop/products", shopProductsRouter);
-app.use("/api/shop/cart", shopCartRouter);
-app.use("/api/shop/address", shopAddressRouter);
-app.use("/api/shop/order", shopOrderRouter);
-app.use("/api/shop/search", shopSearchRouter);
-app.use("/api/shop/review", shopReviewRouter);
+// app.use("/api/shop/products", shopProductsRouter);
+// app.use("/api/shop/cart", shopCartRouter);
+// app.use("/api/shop/address", shopAddressRouter);
+// app.use("/api/shop/order", shopOrderRouter);
+// app.use("/api/shop/search", shopSearchRouter);
+// app.use("/api/shop/review", shopReviewRouter);
 
-app.use("/api/common/feature", commonFeatureRouter);
+// app.use("/api/common/feature", commonFeatureRouter);
 
 app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));
