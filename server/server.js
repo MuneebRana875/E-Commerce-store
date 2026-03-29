@@ -31,36 +31,39 @@ mongoose.connect("mongodb+srv://muneebrana497_db_user:EYLDRTDmunYcE0Zf@cluster0.
   .then(() => console.log("✅ MongoDB Connected Successfully!"))
   .catch((err) => console.log("❌ MongoDB Connection Error:", err));
 
-  
-const app = express();
-const PORT = process.env.PORT || 5000;
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      
-      const allowedOrigins = [
-        "http://localhost:5173",
-        "https://e-commercestore-jet.vercel.app",
-      ];
-      
-      if (!origin || allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    methods: ["GET", "POST", "DELETE", "PUT"],
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "Cache-Control",
-      "Expires",
-      "Pragma",
-    ],
-    credentials: true,
-  })
-);
+
+  app.use(
+    cors({
+      origin: function (origin, callback) {
+        
+        const allowedOrigins = [
+          "http://localhost:5173",
+          "https://e-commercestore-jet.vercel.app",
+        ];
+        
+        if (!origin || allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
+          callback(null, true);
+        } else {
+          callback(new Error("Not allowed by CORS"));
+        }
+      },
+      methods: ["GET", "POST", "DELETE", "PUT"],
+      allowedHeaders: [
+        "Content-Type",
+        "Authorization",
+        "Cache-Control",
+        "Expires",
+        "Pragma",
+      ],
+      credentials: true,
+    })
+  );
+
+  app.options("*", cors());
+  const app = express();
+  const PORT = process.env.PORT || 5000;
+
 
 app.use(cookieParser());
 app.use(express.json());
