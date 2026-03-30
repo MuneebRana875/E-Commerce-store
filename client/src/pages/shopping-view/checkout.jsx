@@ -33,7 +33,7 @@ function ShoppingCheckout() {
       : 0;
 
   // Function ka naam change kar ke Stripe kar diya
-  function handleInitiateStripePayment() {
+  function handleInitiatePaypalPayment() {
     if (cartItems.items.length === 0) {
       toast({
         title: "Your cart is empty.",
