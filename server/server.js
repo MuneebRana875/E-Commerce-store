@@ -33,6 +33,7 @@ mongoose.connect("mongodb+srv://muneebrana497_db_user:EYLDRTDmunYcE0Zf@cluster0.
         const allowedOrigins = [
           "http://localhost:5173",
           "https://e-commercestore-jet.vercel.app",
+          "https://e-commerce-store-production-accd.up.railway.app"
         ];
         
         if (!origin || allowedOrigins.includes(origin) || (origin && origin.endsWith(".vercel.app")) ) {
@@ -72,7 +73,8 @@ app.use("/api/common/feature", commonFeatureRouter);
 
 // Ghalat: app.listen(5000) 
 // Sahi:
-const port = process.env.PORT || 8080;
-app.listen(port, "0.0.0.0", () => {
-    console.log(`Server is running on port ${port}`);
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`✅ Server is running on port ${PORT}`);
 });
