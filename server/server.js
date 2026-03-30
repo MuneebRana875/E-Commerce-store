@@ -18,7 +18,7 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 
 
 const app = express();
-  const PORT = process.env.PORT || 5000;
+  // const PORT = process.env.PORT || 5000;
 
 mongoose.connect("mongodb+srv://muneebrana497_db_user:EYLDRTDmunYcE0Zf@cluster0.mgk6gg4.mongodb.net/ecommerce?retryWrites=true&w=majority")
   .then(() => console.log("✅ MongoDB Connected Successfully!"))
