@@ -11,24 +11,23 @@ const createOrder = async (req, res) => {
       orderDate, orderUpdateDate, cartId,
     } = req.body;
 
-    // 1. Stripe Checkout Session Create karein
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card"],
-      line_items: cartItems.map((item) => ({
-        price_data: {
-          currency: "usd",
-          product_data: { 
-            name: item.title,
-            metadata: { productId: item.productId } 
-          },
-          unit_amount: Math.round(item.price * 100), // Stripe cents mein calculation karta hai
-        },
-        quantity: item.quantity,
-      })),
-      mode: "payment",
-      success_url: `${process.env.CLIENT_URL}/shop/stripe-return?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.CLIENT_URL}/shop/stripe-cancel`,
-    });
+
+
+const session = await stripe.checkout.sessions.create({
+  payment_method_types: ["card"],
+  line_items: cartItems.map((item) => ({
+    price_data: {
+      currency: "usd",
+      product_data: { name: item.title },
+      unit_amount: Math.round(item.price * 100),
+    },
+    quantity: item.quantity,
+  })),
+  mode: "payment",
+  // Yahan path ko frontend ke route se match kar diya:
+  success_url: `${process.env.CLIENT_URL}/shop/paypal-return?session_id={CHECKOUT_SESSION_ID}`,
+  cancel_url: `${process.env.CLIENT_URL}/shop/payment-cancel`, 
+});
 
     // 2. Database mein Order save karein (Pending status ke sath)
     const newlyCreatedOrder = new Order({
