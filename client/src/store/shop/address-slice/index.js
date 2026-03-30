@@ -10,7 +10,7 @@ export const addNewAddress = createAsyncThunk(
   "/addresses/addNewAddress",
   async (formData) => {
     const response = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/shop/address/add`,
+      `${import.meta.env.VITE_API_URL}/shop/address/add`,
       formData
     );
 
@@ -22,7 +22,7 @@ export const fetchAllAddresses = createAsyncThunk(
   "/addresses/fetchAllAddresses",
   async (userId) => {
     const response = await axios.get(
-      `${import.meta.env.VITE_API_URL}/api/shop/address/get/${userId}`
+      `${import.meta.env.VITE_API_URL}/shop/address/get/${userId}`
     );
 
     return response.data;
