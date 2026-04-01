@@ -105,6 +105,7 @@ const logoutUser = (req, res) => {
 //auth middleware
 const authMiddleware = async (req, res, next) => {
   const token = req.cookies.token;
+  console.log("Railway Token:", token);
   if (!token)
     return res.status(401).json({
       success: false,
