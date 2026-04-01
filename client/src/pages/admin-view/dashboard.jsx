@@ -31,16 +31,16 @@ function AdminDashboard() {
 
   return (
     <div>
-      <ProductImageUpload
-        imageFile={imageFile}
-        setImageFile={setImageFile}
-        uploadedImageUrl={uploadedImageUrl}
-        setUploadedImageUrl={setUploadedImageUrl}
-        setImageLoadingState={setImageLoadingState}
-        imageLoadingState={imageLoadingState}
-        isCustomStyling={true}
-        // isEditMode={currentEditedId !== null}
-      />
+    <ProductImageUpload
+  imageFile={imageFile}
+  setImageFile={setImageFile}
+  uploadedImageUrl={uploadedImageUrl}
+  setUploadedImageUrl={setUploadedImageUrl}
+  setImageLoadingState={setImageLoadingState}
+  imageLoadingState={imageLoadingState}
+  isCustomStyling={true}
+  isEditMode={false} // <--- Isay false rakhein dashboard ke liye
+/>
       <Button onClick={handleUploadFeatureImage} className="mt-5 w-full">
         Upload
       </Button>

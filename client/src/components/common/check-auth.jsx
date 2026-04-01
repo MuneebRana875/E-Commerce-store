@@ -1,8 +1,15 @@
 import { Navigate, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux"; 
 
 function CheckAuth({ isAuthenticated, user, children }) {
   const location = useLocation();
 
+  const { isLoading } = useSelector((state) => state.auth);
+
+  // 3. Pehle check karein ke loading ho rahi hai ya nahi
+  if (isLoading) {
+    return null; // Jab tak loading hai, kuch render na karein
+  }
   console.log(location.pathname, isAuthenticated);
 
   if (location.pathname === "/") {

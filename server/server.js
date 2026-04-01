@@ -54,9 +54,8 @@ mongoose.connect("mongodb+srv://muneebrana497_db_user:EYLDRTDmunYcE0Zf@cluster0.
     })
   );
 
+  app.use(cookieParser());
   app.options("*", cors());
-
-app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", authRouter);
 app.use("/api/admin/products", adminProductsRouter);
