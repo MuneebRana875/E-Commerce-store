@@ -57,17 +57,18 @@ const loginUser = async (req, res) => {
         message: "Incorrect password! Please try again",
       });
 
-    const token = jwt.sign(
-      {
-        id: checkUser._id,
-        role: checkUser.role,
-        email: checkUser.email,
-        userName: checkUser.userName,
-      },
-      process.env.JWT_SECRET,
-      "CLIENT_SECRET_KEY",
-      { expiresIn: "60m" }
-    );
+   // Ghalat code: jwt.sign({...}, secret, "extra_string", {options})
+// Sahi code:
+const token = jwt.sign(
+  {
+    id: checkUser._id,
+    role: checkUser.role,
+    email: checkUser.email,
+    userName: checkUser.userName,
+  },
+  process.env.JWT_SECRET || "CLIENT_SECRET_KEY", // Sirf aik string deni hai
+  { expiresIn: "60m" }
+);
 
     res.cookie("token", token, { 
       httpOnly: true, 
