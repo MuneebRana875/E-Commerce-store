@@ -6,17 +6,19 @@ const initialState = {
   featureImageList: [],
 };
 
+// 1. Get Images
 export const getFeatureImages = createAsyncThunk(
   "/order/getFeatureImages",
   async () => {
+    
     const response = await axios.get(
       `${import.meta.env.VITE_API_URL}/common/feature/get`
     );
-
     return response.data;
   }
 );
 
+// 2. Add Image
 export const addFeatureImage = createAsyncThunk(
   "/order/addFeatureImage",
   async (image) => {
@@ -24,19 +26,17 @@ export const addFeatureImage = createAsyncThunk(
       `${import.meta.env.VITE_API_URL}/common/feature/add`,
       { image }
     );
-
     return response.data;
   }
 );
 
-// --- Naya Delete Action Yahan Add Kiya Gaya Hai ---
+// 3. Delete Image
 export const deleteFeatureImage = createAsyncThunk(
   "/order/deleteFeatureImage",
   async (id) => {
     const response = await axios.delete(
       `${import.meta.env.VITE_API_URL}/common/feature/delete/${id}`
     );
-
     return response.data;
   }
 );
