@@ -29,6 +29,18 @@ export const addFeatureImage = createAsyncThunk(
   }
 );
 
+// --- Naya Delete Action Yahan Add Kiya Gaya Hai ---
+export const deleteFeatureImage = createAsyncThunk(
+  "/order/deleteFeatureImage",
+  async (id) => {
+    const response = await axios.delete(
+      `${import.meta.env.VITE_API_URL}/common/feature/delete/${id}`
+    );
+
+    return response.data;
+  }
+);
+
 const commonSlice = createSlice({
   name: "commonSlice",
   initialState,
@@ -46,6 +58,8 @@ const commonSlice = createSlice({
         state.isLoading = false;
         state.featureImageList = [];
       });
+      // Delete ke liye extraReducers ki zaroorat tab hoti hai agar aap 
+      // state mein foran tabdeeli chahte hain, warna fetchAll se kaam chal jata hai.
   },
 });
 
