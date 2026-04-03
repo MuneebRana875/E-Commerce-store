@@ -58,8 +58,6 @@ const commonSlice = createSlice({
         state.isLoading = false;
         state.featureImageList = [];
       });
-      // Delete ke liye extraReducers ki zaroorat tab hoti hai agar aap 
-      // state mein foran tabdeeli chahte hain, warna fetchAll se kaam chal jata hai.
   },
 });
 
