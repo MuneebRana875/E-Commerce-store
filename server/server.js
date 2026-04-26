@@ -33,7 +33,8 @@ mongoose.connect("mongodb+srv://muneebrana497_db_user:EYLDRTDmunYcE0Zf@cluster0.
         const allowedOrigins = [
           "http://localhost:5173",
           "https://e-commercestore-jet.vercel.app",
-          "https://e-commerce-store-production-accd.up.railway.app"
+          "e-commerce-store-4ahs.vercel.app"
+
         ];
         
         if (!origin || allowedOrigins.includes(origin) || (origin && origin.endsWith(".vercel.app")) ) {

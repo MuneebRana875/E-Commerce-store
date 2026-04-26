@@ -131,8 +131,8 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
         } else {
           console.log("Review submission failed:", data?.payload);
           toast({
-            title: "Failed to add review",
-            description: data?.payload?.message || "Please try again later",
+            title: "You already reviewed this product!",
+           
             variant: "destructive",
           });
         }
