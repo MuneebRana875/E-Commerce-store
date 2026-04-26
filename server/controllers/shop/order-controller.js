@@ -24,9 +24,8 @@ const session = await stripe.checkout.sessions.create({
     quantity: item.quantity,
   })),
   mode: "payment",
-  // Yahan path ko frontend ke route se match kar diya:
-  success_url: `${process.env.CLIENT_URL}/shop/paypal-return?session_id={CHECKOUT_SESSION_ID}`,
-  cancel_url: `${process.env.CLIENT_URL}/shop/payment-cancel`, 
+  success_url: "https://e-commerce-store-cyan-pi.vercel.app/shop/paypal-return?session_id={CHECKOUT_SESSION_ID}",
+  cancel_url: "https://e-commerce-store-cyan-pi.vercel.app/shop/payment-cancel", 
 });
 
     // 2. Database mein Order save karein (Pending status ke sath)
